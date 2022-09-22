@@ -1,4 +1,4 @@
-name: Auto-bump-version on merging a Pull Request
+name: Auto-bump-version with yarn
 
 on:
   pull_request:
