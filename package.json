@@ -1,0 +1,9 @@
+{
+  "name": "test-bump",
+  "version": "0.0.0",
+  "description": "desc",
+  "main": "index.js",
+  "repository": "the-miro.com",
+  "author": "miro",
+  "license": "MIT"
+}
