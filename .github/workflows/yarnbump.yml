@@ -1,0 +1,25 @@
+name: Auto-bump-version on merging a Pull Request
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Git config
+        run: |
+          git config user.email "meir.shahar@gmail.com"
+          git config user.name "Meir Shahar"
+
+      - name: Commit new version
+        run: |
+          yarn version --patch
+          git push origin master --follow-tags
