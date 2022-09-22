@@ -14,6 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Git config
+        run: |
+          git config user.email "meir.shahar@gmail.com"
+          git config user.name "Meir Shahar"
+
       - name: Bump version
         id: package_version
         uses: KageKirin/bump-node-package-version@v0
