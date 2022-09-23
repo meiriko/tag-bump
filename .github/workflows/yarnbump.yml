@@ -16,10 +16,12 @@ jobs:
 
       - name: Git config
         run: |
-          git config user.email "john.doe@gmail.com"
-          git config user.name "Lala and Joe"
+          git config user.email "meir.shahar@gmail.com"
+          git config user.name "Meir Shahar"
 
       - name: Commit new version
         run: |
           yarn version --patch
           git push origin master --follow-tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN}}
