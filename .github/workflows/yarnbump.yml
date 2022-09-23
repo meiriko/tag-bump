@@ -14,10 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Git config
-        run: |
-          git config user.email "meir.shahar@gmail.com"
-          git config user.name "Meir Shahar"
+      # - name: Git config
+      #   run: |
+      #     git config user.email "meir.shahar@gmail.com"
+      #     git config user.name "Meir Shahar"
 
       - name: Commit new version
         run: |
