@@ -16,8 +16,8 @@ jobs:
 
       - name: Git config
         run: |
-          git config user.email "meir.shahar@gmail.com"
-          git config user.name "Meir Shahar"
+          git config user.email "john.doe@gmail.com"
+          git config user.name "Lala and Joe"
 
       - name: Commit new version
         run: |
