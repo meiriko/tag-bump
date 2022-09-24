@@ -1,7 +1,7 @@
 {
   "name": "test-bump",
   "version": "0.0.8",
-  "description": "desc",
+  "description": "desc 1",
   "main": "index.js",
   "repository": "the-miro.com",
   "author": "miro",
