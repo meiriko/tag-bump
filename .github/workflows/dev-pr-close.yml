@@ -38,3 +38,9 @@ jobs:
       - id: set-version
         name: Output version change
         run: npm pkg get version
+      - name: Release
+        uses: justincy/github-action-npm-release@v1.2.0
+        id: release
+      - name: Print release output
+        if: ${{ steps.release.outputs.released == 'true' }}
+        run: echo Release ID ${{ steps.release.outputs.release_id }}
