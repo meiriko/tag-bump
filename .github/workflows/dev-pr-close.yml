@@ -39,7 +39,7 @@ jobs:
         name: Output version change
         run: npm pkg get version
       - name: Release
-        uses: justincy/github-action-npm-release@v2.0.1
+        uses: justincy/github-action-npm-release@2.0.1
         id: release
       - name: Print release output
         if: ${{ steps.release.outputs.released == 'true' }}
