@@ -2,4 +2,4 @@ first test
 and another test
 new bump
 should trigger
-should create a new minor version
+should create another patch version
