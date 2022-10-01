@@ -34,12 +34,12 @@ jobs:
       # - name: Git sign last commit
       #   run: git commit --amend --no-edit -S
 
-      - name: Release
-        uses: justincy/github-action-npm-release@2.0.1
-        id: release
-      - name: Print release output
-        if: ${{ steps.release.outputs.released == 'true' }}
-        run: echo Release ID ${{ steps.release.outputs.release_id }}
+      # - name: Release
+      #   uses: justincy/github-action-npm-release@2.0.1
+      #   id: release
+      # - name: Print release output
+      #   if: ${{ steps.release.outputs.released == 'true' }}
+      #   run: echo Release ID ${{ steps.release.outputs.release_id }}
 
       - name: Git push version bump
         run: git push origin master --follow-tags --force
