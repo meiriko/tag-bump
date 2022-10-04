@@ -4,3 +4,4 @@ new bump
 should trigger
 should create another patch version
 demo 1 patch
+demo 2 minor
