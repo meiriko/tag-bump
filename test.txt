@@ -2,4 +2,5 @@ first test
 and another test
 new bump
 should trigger
-should create yet another patch version
+should create another patch version
+demo 1 patch
