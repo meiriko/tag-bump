@@ -6,3 +6,5 @@ should create another patch version
 demo 1 patch
 demo 2 minor
 demo 3 major
+
+For Harriet - patching
