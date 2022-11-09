@@ -27,10 +27,9 @@ jobs:
     steps:
       - name: print inputs
         run: |
-          # echo ">>> event >>>>"
-          # echo "${{ toJson(github.event) }}"
           echo ">>> inputs >>>>"
           echo "${{ github.event.inputs || 'no inputs!' }}"
+# echo ">>> evesson(github.event) }}"
 # echo ${{ JSON.stringify(github.event) }}
 # echo ${{ github.event.inputs.road }}
 
