@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         road: [ap53,ruta27,ruta160]
-        input_road: ${{ fromJson((github.event.inputs.road && '["${{ github.event.inputs.road }}"]') || '["me_so_empty"]') }}
+        input_road: ${{ fromJson((github.event.inputs.road && '[{{ github.event.inputs.road }}]') || '["me_so_empty"]') }}
 # input_road: ${{ fromJson(github.event.inputs.input-road || '["me_so_empty"]') }}
 # input_road: [${{ github.event.inputs && fromJson(github.event.inputs.road) }}]
 # road: ${{ (github.event.inputs && [got, an_input]) || ['no', 'inputs']}}
