@@ -23,7 +23,6 @@ jobs:
     outputs:
       matrix: ${{steps.get-road.outputs.matrix}}
     steps:
-      - uses: actions/checkout@v2
       - id: get-road
         run: echo "::set-output name=matrix::[abc]"
 
