@@ -47,6 +47,9 @@ jobs:
 # road: [ap53,ruta27,ruta160]
       max-parallel: 1
     steps:
+      - name: print len
+        run: |
+          echo "len of matrix: ${{needs.set-matrix.outputs.matrix.length}}"
       - name: print inputs
         run: |
           echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
