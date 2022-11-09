@@ -1,0 +1,40 @@
+name: test-matrix
+on:
+  pull_request:
+    branches:
+      - master
+
+  workflow_dispatch:
+    inputs:
+      road:
+        type: choice
+        description: road
+        options:
+        - ap53
+        - ruta160
+        - ruta27
+        - miro
+
+jobs:
+  run-cycle-post-deployment:
+    env:
+      GH_TOKEN: ${{ secrets.VLN_GH_TOKEN }}
+    runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+    #     road: [ap53,ruta27,ruta160]
+    #   max-parallel: 1
+    steps:
+      - name: print inputs
+        run: |
+          echo ">>> inputs >>>>"
+          echo "${{ github.event.inputs || 'no inputs!' }}"
+# echo ">>> evesson(github.event) }}"
+# echo ${{ JSON.stringify(github.event) }}
+# echo ${{ github.event.inputs.road }}
+
+# - name: web-post-deployment-cycle
+#   if:  ${{ github.event.inputs.road == '' ||  matrix.road == github.event.inputs.road }}
+#   run: |
+#     echo "- Triggering Post-Deployment QA WEB cycle for road ${{ github.event.inputs.road }} matrix road : ${{ matrix.road }}"
+#     jq -n "{\"ref\": \"dev\", \"inputs\": {\"road\":\"${{ matrix.road }}\",\"cycle\":\"web_v2\"}}" | gh api /repos/Valerann/system-qa/actions/workflows/cycle-post-deploy.yml/dispatches --input -
