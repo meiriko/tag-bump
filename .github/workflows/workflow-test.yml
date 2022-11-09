@@ -33,10 +33,10 @@ jobs:
     steps:
       - name: print inputs
         run: |
-          echo "matrix: ${{ matrix.road }}"
+          echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
           echo ">>>> inputs >>>>"
           echo "${{ (github.event.inputs && toJson(github.event.inputs)) || 'no inputs!' }}"
-# echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
+# echo "matrix: ${{ matrix.road }}"
 # echo ">>> evesson(github.event) }}"
 # echo ${{ JSON.stringify(github.event) }}
 # echo ${{ github.event.inputs.road }}
