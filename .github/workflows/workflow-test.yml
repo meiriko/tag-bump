@@ -14,21 +14,29 @@ on:
         - ruta160
         - ruta27
         - miro
+      input-road:
+        default: "['abc', 'xyz']"
 
 jobs:
   run-cycle-post-deployment:
     env:
       GH_TOKEN: ${{ secrets.VLN_GH_TOKEN }}
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     road: [ap53,ruta27,ruta160]
-    #   max-parallel: 1
+    strategy:
+      matrix:
+        road: [ap53,ruta27,ruta160]
+# input_road: ${{ fromJson(github.event.inputs.input_road) }}
+# input_road: [${{ github.event.inputs && fromJson(github.event.inputs.road) }}]
+# road: ${{ (github.event.inputs && [got, an_input]) || ['no', 'inputs']}}
+# road: [ap53,ruta27,ruta160]
+      max-parallel: 1
     steps:
       - name: print inputs
         run: |
+          echo "matrix: ${{ matrix.road }}"
           echo ">>> inputs >>>>"
-          echo "${{ github.event.inputs || 'no inputs!' }}"
+          echo "${{ (github.event.inputs && toJson(github.event.inputs)) || 'no inputs!' }}"
+# echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
 # echo ">>> evesson(github.event) }}"
 # echo ${{ JSON.stringify(github.event) }}
 # echo ${{ github.event.inputs.road }}
