@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        road: (${{ github.event.inputs }} && [got, an_input]) || ['no', 'inputs']
+        road: ${{ (github.event.inputs && [got, an_input]) || ['no', 'inputs']}}
         # road: [ap53,ruta27,ruta160]
       max-parallel: 1
     steps:
