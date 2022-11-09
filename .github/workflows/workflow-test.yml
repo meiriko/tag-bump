@@ -28,8 +28,8 @@ jobs:
       - name: print inputs
         run: |
           echo ">>> road >>>>"
+          echo ${{ fromJSON(github.event) }}
 # echo ${{ github.event.inputs.road }}
-# echo ${{ fromJSON(github.event) }}
 
 # - name: web-post-deployment-cycle
 #   if:  ${{ github.event.inputs.road == '' ||  matrix.road == github.event.inputs.road }}
