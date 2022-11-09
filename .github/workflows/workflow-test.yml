@@ -25,18 +25,18 @@ jobs:
     strategy:
       matrix:
         road: [ap53,ruta27,ruta160]
-        # input_road: ${{ fromJson(github.event.inputs.input_road) }}
-        # input_road: [${{ github.event.inputs && fromJson(github.event.inputs.road) }}]
-        # road: ${{ (github.event.inputs && [got, an_input]) || ['no', 'inputs']}}
-        # road: [ap53,ruta27,ruta160]
+# input_road: ${{ fromJson(github.event.inputs.input_road) }}
+# input_road: [${{ github.event.inputs && fromJson(github.event.inputs.road) }}]
+# road: ${{ (github.event.inputs && [got, an_input]) || ['no', 'inputs']}}
+# road: [ap53,ruta27,ruta160]
       max-parallel: 1
     steps:
       - name: print inputs
         run: |
           echo "matrix: ${{ matrix.road }}"
-# echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
           echo ">>> inputs >>>>"
           echo "${{ (github.event.inputs && toJson(github.event.inputs)) || 'no inputs!' }}"
+# echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
 # echo ">>> evesson(github.event) }}"
 # echo ${{ JSON.stringify(github.event) }}
 # echo ${{ github.event.inputs.road }}
