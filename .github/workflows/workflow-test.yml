@@ -20,13 +20,14 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.VLN_GH_TOKEN }}
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     road: [ap53,ruta27,ruta160]
-    #   max-parallel: 1
+    strategy:
+      matrix:
+        road: [ap53,ruta27,ruta160]
+      max-parallel: 1
     steps:
       - name: print inputs
         run: |
+          echo "matrix: ${{ matrix.road }}"
           echo ">>> inputs >>>>"
           echo "${{ (github.event.inputs && toJson(github.event.inputs)) || 'no inputs!' }}"
 # echo ">>> evesson(github.event) }}"
