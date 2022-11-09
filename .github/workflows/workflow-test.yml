@@ -28,7 +28,9 @@ jobs:
       - name: print inputs
         run: |
           echo ">>> road >>>>"
-          echo ${{ JSON.stringify(github.event) }}
+          echo "$GITHUB_CONTEXT"
+          echo "${{ github.event }}"
+# echo ${{ JSON.stringify(github.event) }}
 # echo ${{ github.event.inputs.road }}
 
 # - name: web-post-deployment-cycle
