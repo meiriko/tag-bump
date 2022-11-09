@@ -14,6 +14,8 @@ on:
         - ruta160
         - ruta27
         - miro
+      input_road:
+        default: "['abc', 'xyz']"
 
 jobs:
   run-cycle-post-deployment:
@@ -23,7 +25,8 @@ jobs:
     strategy:
       matrix:
         road: [ap53,ruta27,ruta160]
-        input_road: [${{ github.event.inputs && fromJson(github.event.inputs.road) }}]
+        input_road: ${{ fromJson(github.event.inputs.input_road) }}
+        # input_road: [${{ github.event.inputs && fromJson(github.event.inputs.road) }}]
         # road: ${{ (github.event.inputs && [got, an_input]) || ['no', 'inputs']}}
         # road: [ap53,ruta27,ruta160]
       max-parallel: 1
