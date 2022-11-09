@@ -14,7 +14,7 @@ on:
         - ruta160
         - ruta27
         - miro
-      input_road:
+      input-road:
         default: "['abc', 'xyz']"
 
 jobs:
