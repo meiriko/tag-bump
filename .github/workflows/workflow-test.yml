@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "${{ (github.event.inputs && toJson(github.event.inputs)) || 'no inputs!' }}"
       - id: get-road
-        run: echo "::set-output name=matrix::${{(github.event.inputs && github.event.inputs.road && [\"${{github.event.inputs.road}}\"]) || '[\"nothing\"]'}}
+        run: echo "::set-output name=matrix::${{(github.event.inputs && github.event.inputs.road && [\"${{github.event.inputs.road}}\"]) || [\"nothing\"]}}
         # [\"abc\", \"def\", \"${{(github.event.inputs && github.event.inputs.road) || 'lala'}}\"]"
         # run: echo "::set-output name=matrix::[\"abc\", \"def\", \"${{(github.event.inputs && github.event.inputs.road) || 'lala'}}\"]"
 
