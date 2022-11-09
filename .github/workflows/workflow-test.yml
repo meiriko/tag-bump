@@ -24,7 +24,7 @@ jobs:
       matrix: ${{steps.get-road.outputs.matrix}}
     steps:
       - id: get-road
-        run: echo "::set-output name=matrix::[\"abc\", \"def\", ${{(github.event.inputs && github.event.inputs.road) || \"lala\"}}]"
+        run: echo "::set-output name=matrix::[\"abc\", \"def\", ${{(github.event.inputs && github.event.inputs.road) || 'lala'}}]"
 
   run-cycle-post-deployment:
     env:
