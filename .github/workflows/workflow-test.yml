@@ -14,29 +14,48 @@ on:
         - ruta160
         - ruta27
         - miro
-      input-road:
-        default: "['abc', 'xyz']"
 
 jobs:
+  set-matrix:
+    runs-on: ubuntu-20.04
+    outputs:
+      matrix: ${{steps.get-road.outputs.matrix}}
+    steps:
+      - name: print input
+        run: |
+          echo "${{ (github.event.inputs && toJson(github.event.inputs)) || 'no inputs!' }}"
+          echo "${{github.event.inputs && github.event.inputs.road}}"
+      - id: get-road
+        run: echo "::set-output name=matrix::[\"${{github.event.inputs.road}}\"]"
+        # run: echo "::set-output name=matrix::${{(github.event.inputs && github.event.inputs.road && '[\"${{github.event.inputs.road}}\"]') || '[\"nothing\"]'}}"
+        # [\"abc\", \"def\", \"${{(github.event.inputs && github.event.inputs.road) || 'lala'}}\"]"
+        # run: echo "::set-output name=matrix::[\"abc\", \"def\", \"${{(github.event.inputs && github.event.inputs.road) || 'lala'}}\"]"
+
   run-cycle-post-deployment:
     env:
       GH_TOKEN: ${{ secrets.VLN_GH_TOKEN }}
     runs-on: ubuntu-latest
+    needs: set-matrix
     strategy:
       matrix:
-        road: [ap53,ruta27,ruta160]
-# input_road: ${{ fromJson(github.event.inputs.input_road) }}
+        road: [xxx, yyy]
+        input_road: ${{fromJson(needs.set-matrix.outputs.matrix)}}
+# input_road: ${{ fromJson((github.event.inputs.road && fromJson(github.event.inputs.road)) || '["me_so_empty"]') }}
+# input_road: ${{ fromJson(github.event.inputs.input-road || '["me_so_empty"]') }}
 # input_road: [${{ github.event.inputs && fromJson(github.event.inputs.road) }}]
 # road: ${{ (github.event.inputs && [got, an_input]) || ['no', 'inputs']}}
 # road: [ap53,ruta27,ruta160]
       max-parallel: 1
     steps:
+      - name: print len
+        run: |
+          echo "len of matrix: ${{needs.set-matrix.outputs.matrix}} -- ${{fromJson(needs.set-matrix.outputs.matrix)}} is ${{fromJson(needs.set-matrix.outputs.matrix).length}}"
       - name: print inputs
         run: |
-          echo "matrix: ${{ matrix.road }}"
-          echo ">>> inputs >>>>"
+          echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
+          echo ">>>> inputs >>>>"
           echo "${{ (github.event.inputs && toJson(github.event.inputs)) || 'no inputs!' }}"
-# echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
+# echo "matrix: ${{ matrix.road }}"
 # echo ">>> evesson(github.event) }}"
 # echo ${{ JSON.stringify(github.event) }}
 # echo ${{ github.event.inputs.road }}
