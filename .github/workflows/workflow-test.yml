@@ -27,10 +27,12 @@ jobs:
     steps:
       - name: print inputs
         run: |
-          echo ">>> roadzzz >>>>"
+          echo ">>> context >>>>"
           echo "$GITHUB_CONTEXT"
+          echo ">>> event >>>>"
           echo "${{ toJson(github.event) }}"
-          echo "${{ github.event }}"
+          echo ">>> inputs >>>>"
+          echo "${{ github.event.inputs || 'no inputs!' }}"
 # echo ${{ JSON.stringify(github.event) }}
 # echo ${{ github.event.inputs.road }}
 
