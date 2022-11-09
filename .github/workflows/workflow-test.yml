@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: print len
         run: |
-          echo "len of matrix: ${{fromJson(needs.set-matrix.outputs.matrix)}} is ${{fromJson(needs.set-matrix.outputs.matrix.length)}}"
+          echo "len of matrix: ${{fromJson(needs.set-matrix.outputs.matrix)}} is ${{fromJson(needs.set-matrix.outputs.matrix).length}}"
       - name: print inputs
         run: |
           echo "matrix: ${{ matrix.road }}, ${{ matrix.input_road }}"
